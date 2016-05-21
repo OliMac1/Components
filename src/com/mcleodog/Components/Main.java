@@ -9,5 +9,6 @@ public class Main {
 
     public static void main(String[] args){
         HashMap<Integer, String> map = new HashMap<Integer, String>();
+        
     }
 }
