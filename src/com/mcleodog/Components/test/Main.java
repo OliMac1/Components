@@ -1,9 +1,7 @@
-package com.mcleodog.Components;
+package com.mcleodog.Components.test;
 
+import com.mcleodog.Components.BaseEntity;
 import com.mcleodog.Components.exceptions.NullComponentException;
-import com.mcleodog.Components.test.TestComponent;
-
-import java.util.HashMap;
 
 /**
  * Created by Oliver on 21/05/2016.
@@ -15,6 +13,5 @@ public class Main {
         e.addComponent(new TestComponent());
         e.update();
     }
-
 
 }
