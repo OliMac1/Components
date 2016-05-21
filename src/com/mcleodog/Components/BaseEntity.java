@@ -9,13 +9,13 @@ import java.util.HashMap;
  */
 public class BaseEntity {
 
-    private HashMap<Integer, Component> components;
+    private HashMap<Integer, IComponent> components;
 
     public BaseEntity(){
-        components = new HashMap<Integer, Component>();
+        components = new HashMap<Integer, IComponent>();
     }
 
-    public void addComponent(Component c) throws NullComponentException{
+    public void addComponent(IComponent c) throws NullComponentException{
         if(c == null){
             throw new NullComponentException();
         }
