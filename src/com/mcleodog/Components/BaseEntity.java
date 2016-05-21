@@ -15,7 +15,7 @@ public class BaseEntity {
         components = new HashMap<Integer, Component>();
     }
 
-    public void addCompnent(Component c) throws NullComponentException{
+    public void addComponent(Component c) throws NullComponentException{
         if(c == null){
             throw new NullComponentException();
         }
