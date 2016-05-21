@@ -1,5 +1,7 @@
 package com.mcleodog.Components;
 
+import java.util.HashMap;
+
 /**
  * Created by Oliver on 21/05/2016.
  */
