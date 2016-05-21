@@ -12,9 +12,7 @@ public class Main {
         map.put(1,"Wow");
         map.put(12,"god");
         map.put(2,"you");
-        map.forEach((k,v) -> {
-            System.out.println(v);
-        });
+        map.forEach((k,v) -> System.out.println(v));
         System.out.println("End");
     }
 }
