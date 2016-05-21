@@ -1,6 +1,6 @@
 package com.mcleodog.Components.test;
 
-import com.mcleodog.Components.BaseEntity;
+import com.mcleodog.Components.IBaseEntity;
 import com.mcleodog.Components.IBaseEntityHolder;
 import com.mcleodog.Components.exceptions.NullEntityException;
 
@@ -12,14 +12,14 @@ import java.util.List;
  */
 public class TestBaseEntityHolder implements IBaseEntityHolder {
 
-    List<BaseEntity> entities;
+    List<IBaseEntity> entities;
 
     public TestBaseEntityHolder(){
-        entities = new ArrayList<BaseEntity>();
+        entities = new ArrayList<IBaseEntity>();
     }
 
     @Override
-    public void addEntity(BaseEntity entity) throws NullEntityException{
+    public void addEntity(IBaseEntity entity) throws NullEntityException{
         if(entity == null){
             throw new NullEntityException();
         }
