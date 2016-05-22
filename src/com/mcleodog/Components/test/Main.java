@@ -29,23 +29,7 @@ public class Main {
         e.update();
 
         String pathName = "/Users/olivermcleod/Desktop/bins.bin";
-        Saving.createFreshBinary(pathName);
-        Saving.writeBinaryFile(Saving.intToBytes(65565), pathName);
-        Saving.writeBinaryFile(Saving.floatToBytes(435.4534f),  pathName);
-        Saving.writeBinaryFile(Saving.longToBytes(98795743985937l), pathName);
-        Saving.writeBinaryFile(Saving.doubleToBytes(12312.231434124), pathName);
-        Saving.writeBinaryFile(Saving.shortToBytes((short)8654), pathName);
-        Saving.writeBinaryFile(Saving.stringToBytes("Hello World"), pathName);
-        Saving.writeBinaryFile(Saving.stringToBytes("World"), pathName);
-        ByteArrayInputStream bytes = Loading.readAllBytes(pathName);
-        System.out.println(Loading.getInt(bytes));
-        System.out.println(Loading.getFloat(bytes));
-        System.out.println(Loading.getLong(bytes));
-        System.out.println(Loading.getDouble(bytes));
-        System.out.println(Loading.getShort(bytes));
-        System.out.println(Loading.getString(bytes));
-        System.out.println(Loading.getString(bytes));
-        Loading.finishReading(bytes);
+
     }
 
 }

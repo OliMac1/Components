@@ -23,4 +23,9 @@ public class TestComponent implements IComponent {
         System.out.println("This is a defaults: " + i);
         i++;
     }
+
+    @Override
+    public byte[] export() {
+        return new byte[0];
+    }
 }

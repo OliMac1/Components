@@ -16,4 +16,9 @@ public class TestComponent2 implements IComponent{
     public void update() {
         System.out.println("This is a second defaults.");
     }
+
+    @Override
+    public byte[] export() {
+        return new byte[0];
+    }
 }
