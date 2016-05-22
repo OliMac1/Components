@@ -1,4 +1,4 @@
-package com.mcleodog.Components.test;
+package com.mcleodog.Components.defaults;
 
 import com.mcleodog.Components.IBaseEntity;
 import com.mcleodog.Components.IBaseEntityHolder;
@@ -10,11 +10,11 @@ import java.util.List;
 /**
  * Created by olivermcleod on 21/05/2016.
  */
-public class TestBaseEntityHolder implements IBaseEntityHolder {
+public class DefaultBaseEntityHolder implements IBaseEntityHolder {
 
     List<IBaseEntity> entities;
 
-    public TestBaseEntityHolder(){
+    public DefaultBaseEntityHolder(){
         entities = new ArrayList<IBaseEntity>();
     }
 

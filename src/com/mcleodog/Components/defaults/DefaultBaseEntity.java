@@ -1,4 +1,4 @@
-package com.mcleodog.Components.test;
+package com.mcleodog.Components.defaults;
 
 import com.mcleodog.Components.IBaseEntity;
 import com.mcleodog.Components.IComponent;
@@ -12,13 +12,13 @@ import java.util.Map;
 /**
  * Created by olivermcleod on 21/05/2016.
  */
-public class TestBaseEntity implements IBaseEntity{
+public class DefaultBaseEntity implements IBaseEntity{
 
     //possibly could do with a better key type. Integer can veryEasily have a clash.
     private LinkedHashMap<IComponentType, IComponent> components;
     private static KeyComparator comp = new KeyComparator();
 
-    public TestBaseEntity(){
+    public DefaultBaseEntity(){
         components = new LinkedHashMap<IComponentType, IComponent>();
     }
 
