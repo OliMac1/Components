@@ -1,25 +1,25 @@
 package com.mcleodog.Components.io;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.ByteBuffer;
-import java.nio.file.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 
 /**
  * Created by Oliver on 22/05/2016.
  */
 public class Saving {
 
+    public static void createFreshBinary(String fileName) throws IOException{
+        Path path = Paths.get(fileName);
+        Files.write(path, new byte[0]);
+    }
+
     public static void writeBinaryFile(byte[] data, String fileName) throws IOException{
         Path path = Paths.get(fileName);
-        while(true) {
-            try {
-                Files.write(path, data, StandardOpenOption.APPEND);
-                return;
-            } catch (NoSuchFileException e) {
-                Files.createFile(path);
-            }
-        }
+        Files.write(path, data, StandardOpenOption.APPEND);
     }
 
     public static byte[] intToBytes(int i){
