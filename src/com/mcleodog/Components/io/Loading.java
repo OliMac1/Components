@@ -54,6 +54,22 @@ public class Loading {
         return b.getShort();
     }
 
+    public static String getString(ByteArrayInputStream data){
+        data.mark(0);
+        byte[] b = new byte[1];
+        data.read(b, 0, 1);
+        int i = 0;
+        while(b[0] != 0x0A){
+            data.read(b, 0 ,1);
+            i++;
+        }
+        data.reset();
+        byte[] array = new byte[i];
+        data.read(array,0,i);
+        data.read(b, 0, 1);
+        return new String(array);
+    }
+
     public static void finishReading(ByteArrayInputStream reader) throws IOException {
         reader.close();
     }

@@ -32,12 +32,16 @@ public class Main {
         Saving.writeBinaryFile(Saving.longToBytes(98795743985937l), "Z:/New folder (5)/bins.bin");
         Saving.writeBinaryFile(Saving.doubleToBytes(12312.231434124), "Z:/New folder (5)/bins.bin");
         Saving.writeBinaryFile(Saving.shortToBytes((short)8654), "Z:/New folder (5)/bins.bin");
+        Saving.writeBinaryFile(Saving.stringToBytes("Hello"), "Z:/New folder (5)/bins.bin");
+        Saving.writeBinaryFile(Saving.stringToBytes("World"), "Z:/New folder (5)/bins.bin");
         ByteArrayInputStream bytes = Loading.readAllBytes("Z:/New folder (5)/bins.bin");
         System.out.println(Loading.getInt(bytes));
         System.out.println(Loading.getFloat(bytes));
         System.out.println(Loading.getLong(bytes));
         System.out.println(Loading.getDouble(bytes));
         System.out.println(Loading.getShort(bytes));
+        System.out.println(Loading.getString(bytes));
+        System.out.println(Loading.getString(bytes));
         Loading.finishReading(bytes);
     }
 

@@ -52,4 +52,9 @@ public class Saving {
         return b.array();
     }
 
+    public static byte[] stringToBytes(String s){
+        s += "\n";
+        return s.getBytes();
+    }
+
 }
