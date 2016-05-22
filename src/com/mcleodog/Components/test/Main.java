@@ -8,6 +8,7 @@ import com.mcleodog.Components.exceptions.NullComponentException;
 import com.mcleodog.Components.exceptions.NullEntityException;
 import com.mcleodog.Components.io.Loading;
 import com.mcleodog.Components.io.Saving;
+import com.sun.deploy.config.Platform;
 
 import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
@@ -20,7 +21,7 @@ public class Main {
 
     public static void main(String[] args) throws NullComponentException, NullEntityException, IOException {
         IBaseEntityHolder e = new DefaultBaseEntityHolder();
-        for(int i = 0; i < 3; i++) {
+        for(int i = 0; i < 5; i++) {
             IBaseEntity entity = new DefaultBaseEntity();
             entity.addComponent(new TestComponent2());
             entity.addComponent(new TestComponent());
@@ -28,7 +29,7 @@ public class Main {
         }
         e.update();
 
-        String pathName = "/Users/olivermcleod/Desktop/bins.bin";
+        e.export();
 
     }
 

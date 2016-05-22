@@ -12,14 +12,14 @@ import java.nio.file.StandardOpenOption;
  */
 public class Saving {
 
-    public static void createFreshBinary(String fileName) throws IOException{
+    public static Path createFreshBinary(String fileName) throws IOException{
         Path path = Paths.get(fileName);
         Files.write(path, new byte[0]);
+        return path;
     }
 
-    public static void writeBinaryFile(byte[] data, String fileName) throws IOException{
-        Path path = Paths.get(fileName);
-        Files.write(path, data, StandardOpenOption.APPEND);
+    public static void writeBinaryFile(byte[] data, Path p) throws IOException{
+        Files.write(p, data, StandardOpenOption.APPEND);
     }
 
     public static byte[] intToBytes(int i){

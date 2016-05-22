@@ -4,7 +4,10 @@ import com.mcleodog.Components.IBaseEntity;
 import com.mcleodog.Components.IComponent;
 import com.mcleodog.Components.IComponentType;
 import com.mcleodog.Components.exceptions.NullComponentException;
+import com.mcleodog.Components.io.Saving;
 
+import java.io.IOException;
+import java.nio.file.Path;
 import java.util.Comparator;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -39,6 +42,19 @@ public class DefaultBaseEntity implements IBaseEntity {
     @Override
     public void update() {
         components.forEach((k, v) -> v.update());
+    }
+
+    @Override
+    public void export(Path path) throws IOException{
+        Saving.writeBinaryFile(Saving.intToBytes(components.size()),path);
+        components.forEach((k,v) -> {
+            try {
+                //TODO export Key in a usable format.
+                v.export(path);
+            }catch(IOException e){
+                e.printStackTrace();
+            }
+        });
     }
 
     private void sort() {
