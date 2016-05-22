@@ -8,6 +8,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
+//TODO check that the end of the file has not been reached.
 /**
  * Created by Oliver on 22/05/2016.
  */
