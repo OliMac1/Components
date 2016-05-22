@@ -27,6 +27,11 @@ public class TestBaseEntityHolder implements IBaseEntityHolder {
     }
 
     @Override
+    public boolean removeEntity(IBaseEntity entity){
+        return entities.remove(entity);
+    }
+
+    @Override
     public void update() {
         entities.forEach(entity -> entity.update());
     }

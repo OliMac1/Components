@@ -8,6 +8,10 @@ import com.mcleodog.Components.IComponentType;
  */
 public class TestComponent implements IComponent {
 
+    private int i;
+    public TestComponent(){
+        i = 0;
+    }
 
     @Override
     public IComponentType getType() {
@@ -16,6 +20,7 @@ public class TestComponent implements IComponent {
 
     @Override
     public void update() {
-        System.out.println("This is a test");
+        System.out.println("This is a test: " + i);
+        i++;
     }
 }

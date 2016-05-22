@@ -9,5 +9,6 @@ import com.mcleodog.Components.test.TestBaseEntity;
 public interface IBaseEntityHolder {
 
     void addEntity(IBaseEntity entity) throws NullEntityException;
+    boolean removeEntity(IBaseEntity entity);
     void update();
 }
