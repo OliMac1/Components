@@ -1,5 +1,7 @@
 package com.mcleodog.Components;
 
+import java.io.ByteArrayInputStream;
+
 /**
  * Created by Oliver on 22/05/2016.
  */
@@ -7,5 +9,5 @@ package com.mcleodog.Components;
 public interface IComponentBuilder {
 
     IComponent buildNew();
-    IComponent buildFromSave();
+    IComponent buildFromSave(ByteArrayInputStream data);
 }

@@ -11,8 +11,8 @@ import java.nio.file.Path;
 public class TestComponent implements IComponent {
 
     private int i;
-    public TestComponent(){
-        i = 0;
+    public TestComponent(int i){
+        this.i = i;
     }
 
     @Override
