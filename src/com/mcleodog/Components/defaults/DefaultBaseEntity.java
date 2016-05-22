@@ -8,13 +8,13 @@ import com.mcleodog.Components.exceptions.NullComponentException;
 import java.util.Comparator;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * Created by olivermcleod on 21/05/2016.
  */
 public class DefaultBaseEntity implements IBaseEntity{
 
-    //possibly could do with a better key type. Integer can veryEasily have a clash.
     private LinkedHashMap<IComponentType, IComponent> components;
     private static KeyComparator comp = new KeyComparator();
 
@@ -42,14 +42,15 @@ public class DefaultBaseEntity implements IBaseEntity{
     }
 
     private void sort(){
-        components.entrySet().stream().sorted(Map.Entry.comparingByKey(comp));
+        components = components.entrySet().stream().sorted(Map.Entry.comparingByKey(comp)).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue,(a, b) -> a, LinkedHashMap<IComponentType, IComponent>::new));
     }
 
     private static class KeyComparator implements Comparator<IComponentType> {
 
+
         @Override
         public int compare(IComponentType o1, IComponentType o2) {
-            return o1.getPriority()-o2.getPriority();
+            return o2.getPriority()-o1.getPriority();
         }
     }
 
