@@ -60,7 +60,7 @@ public class Loading {
         byte[] b = new byte[1];
         data.read(b, 0, 1);
         int i = 0;
-        while(b[0] != 0x0A){
+        while(b[0] != 0x00){
             data.read(b, 0 ,1);
             i++;
         }

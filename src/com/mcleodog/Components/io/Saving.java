@@ -53,7 +53,7 @@ public class Saving {
     }
 
     public static byte[] stringToBytes(String s){
-        s += "\n";
+        s += "\0";
         return s.getBytes();
     }
 
