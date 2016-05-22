@@ -7,7 +7,8 @@ import com.mcleodog.Components.IComponentType;
  */
 public enum TestComponentType implements IComponentType{
 
-    TEST_COMPONENT_TYPE(1);
+    TEST_COMPONENT_TYPE(1),
+    TEST_COMPONENT_TYPE_2(2);
 
     private int priority;
 

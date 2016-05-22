@@ -14,12 +14,11 @@ public class Main {
         IBaseEntityHolder e = new TestBaseEntityHolder();
         for(int i = 0; i < 3; i++) {
             IBaseEntity entity = new TestBaseEntity();
+            entity.addComponent(new TestComponent2());
             entity.addComponent(new TestComponent());
             e.addEntity(entity);
         }
-        for(int i = 0; i < 5; i++){
-            e.update();
-        }
+        e.update();
     }
 
 }

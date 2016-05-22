@@ -8,6 +8,6 @@ import com.mcleodog.Components.exceptions.NullComponentException;
 public interface IBaseEntity {
 
     void addComponent(IComponent c) throws NullComponentException;
-
+    IComponent removeComponent(IComponentType c);
     void update();
 }
