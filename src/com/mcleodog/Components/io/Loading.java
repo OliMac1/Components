@@ -33,6 +33,27 @@ public class Loading {
         return b.getFloat();
     }
 
+    public static long getLong(ByteArrayInputStream data){
+        byte[] i = new byte[8];
+        data.read(i, 0, 8);
+        ByteBuffer b = ByteBuffer.wrap(i);
+        return b.getLong();
+    }
+
+    public static double getDouble(ByteArrayInputStream data){
+        byte[] i = new byte[8];
+        data.read(i, 0, 8);
+        ByteBuffer b = ByteBuffer.wrap(i);
+        return b.getDouble();
+    }
+
+    public static short getShort(ByteArrayInputStream data){
+        byte[] i = new byte[2];
+        data.read(i, 0, 2);
+        ByteBuffer b = ByteBuffer.wrap(i);
+        return b.getShort();
+    }
+
     public static void finishReading(ByteArrayInputStream reader) throws IOException {
         reader.close();
     }

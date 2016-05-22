@@ -18,7 +18,6 @@ public class Saving {
                 return;
             } catch (NoSuchFileException e) {
                 Files.createFile(path);
-
             }
         }
     }
@@ -32,6 +31,24 @@ public class Saving {
     public static byte[] floatToBytes(float f){
         ByteBuffer b = ByteBuffer.allocate(4);
         b.putFloat(f);
+        return b.array();
+    }
+
+    public static byte[] doubleToBytes(double d){
+        ByteBuffer b = ByteBuffer.allocate(8);
+        b.putDouble(d);
+        return b.array();
+    }
+
+    public static byte[] shortToBytes(short s){
+        ByteBuffer b = ByteBuffer.allocate(2);
+        b.putShort(s);
+        return b.array();
+    }
+
+    public static byte[] longToBytes(long l){
+        ByteBuffer b = ByteBuffer.allocate(8);
+        b.putLong(l);
         return b.array();
     }
 

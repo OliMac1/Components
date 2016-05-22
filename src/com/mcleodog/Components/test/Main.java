@@ -29,9 +29,15 @@ public class Main {
         e.update();
         Saving.writeBinaryFile(Saving.intToBytes(65565), "Z:/New folder (5)/bins.bin");
         Saving.writeBinaryFile(Saving.floatToBytes(435.4534f), "Z:/New folder (5)/bins.bin");
+        Saving.writeBinaryFile(Saving.longToBytes(98795743985937l), "Z:/New folder (5)/bins.bin");
+        Saving.writeBinaryFile(Saving.doubleToBytes(12312.231434124), "Z:/New folder (5)/bins.bin");
+        Saving.writeBinaryFile(Saving.shortToBytes((short)8654), "Z:/New folder (5)/bins.bin");
         ByteArrayInputStream bytes = Loading.readAllBytes("Z:/New folder (5)/bins.bin");
         System.out.println(Loading.getInt(bytes));
         System.out.println(Loading.getFloat(bytes));
+        System.out.println(Loading.getLong(bytes));
+        System.out.println(Loading.getDouble(bytes));
+        System.out.println(Loading.getShort(bytes));
         Loading.finishReading(bytes);
     }
 

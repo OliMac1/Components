@@ -13,18 +13,18 @@ import java.util.stream.Collectors;
 /**
  * Created by olivermcleod on 21/05/2016.
  */
-public class DefaultBaseEntity implements IBaseEntity{
+public class DefaultBaseEntity implements IBaseEntity {
 
-    private LinkedHashMap<IComponentType, IComponent> components;
     private static KeyComparator comp = new KeyComparator();
+    private LinkedHashMap<IComponentType, IComponent> components;
 
-    public DefaultBaseEntity(){
+    public DefaultBaseEntity() {
         components = new LinkedHashMap<IComponentType, IComponent>();
     }
 
     @Override
-    public void addComponent(IComponent c) throws NullComponentException{
-        if(c == null){
+    public void addComponent(IComponent c) throws NullComponentException {
+        if (c == null) {
             throw new NullComponentException();
         }
         components.put(c.getType(), c);
@@ -37,12 +37,13 @@ public class DefaultBaseEntity implements IBaseEntity{
     }
 
     @Override
-    public void update(){
-        components.forEach((k,v) -> v.update());
+    public void update() {
+        components.forEach((k, v) -> v.update());
     }
 
-    private void sort(){
-        components = components.entrySet().stream().sorted(Map.Entry.comparingByKey(comp)).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue,(a, b) -> a, LinkedHashMap<IComponentType, IComponent>::new));
+    private void sort() {
+        components = components.entrySet().stream().sorted(Map.Entry.comparingByKey(comp))
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (a, b) -> a, LinkedHashMap<IComponentType, IComponent>::new));
     }
 
     private static class KeyComparator implements Comparator<IComponentType> {
@@ -50,7 +51,7 @@ public class DefaultBaseEntity implements IBaseEntity{
 
         @Override
         public int compare(IComponentType o1, IComponentType o2) {
-            return o2.getPriority()-o1.getPriority();
+            return o2.getPriority() - o1.getPriority();
         }
     }
 
