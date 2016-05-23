@@ -6,11 +6,10 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * Created by Oliver on 22/05/2016.
+ * Created by olivermcleod on 23/05/2016.
  */
 @Retention(RetentionPolicy.RUNTIME)
-@Target(ElementType.TYPE)
-public @interface AnnComponentBuilder {
-    public String name();
-    public int value();
+@Target(ElementType.METHOD)
+public @interface EventHandler {
+    public ModuleEventHandle type();
 }
