@@ -1,5 +1,6 @@
 package com.mcleodog.Components.test;
 
+import com.mcleodog.Components.Components;
 import com.mcleodog.Components.IBaseEntity;
 import com.mcleodog.Components.IBaseEntityHolder;
 import com.mcleodog.Components.annotations.Instance;
@@ -11,10 +12,9 @@ import com.mcleodog.Components.exceptions.NullEntityException;
 import org.reflections.Reflections;
 
 import java.io.IOException;
-import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -24,12 +24,8 @@ public class Main {
 
     public static void main(String[] args) throws NullComponentException, NullEntityException, IOException {
 
-        Reflections reflections = new Reflections();
-        Set<Class<?>> moduleSet = reflections.getTypesAnnotatedWith(Module.class);
-        Set<Field> instanceSet = reflections.getFieldsAnnotatedWith(Instance.class);
-        moduleSet.forEach(module -> {
-
-        });
+        Components.init();
+        TestModule.test();
 
         IBaseEntityHolder e = new DefaultBaseEntityHolder();
         for(int i = 0; i < 5; i++) {

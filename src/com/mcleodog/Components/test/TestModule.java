@@ -16,6 +16,10 @@ public class TestModule {
     @Instance(modid = TestModule.MODID)
     public static TestModule instance;
 
+    public static void test(){
+        System.out.println(instance);
+    }
+
     @Override
     public String toString() {
         return "Test Module";
