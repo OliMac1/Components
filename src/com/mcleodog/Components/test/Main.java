@@ -24,7 +24,7 @@ public class Main {
     public static void main(String[] args) throws NullComponentException, NullEntityException, IOException {
 
         Reflections reflections = new Reflections();
-        HashMap<Integer, IComponentBuilder> builders = new HashMap<Integer, IComponentBuilder>();
+        HashMap<Integer, IComponentBuilder> builders = new HashMap<>();
         Set<Class<?>> buildersSet = reflections.getTypesAnnotatedWith(AnnComponentBuilder.class);
         buildersSet.forEach(c -> {
             try {
@@ -33,11 +33,7 @@ public class Main {
                 builders.put(c.getAnnotation(AnnComponentBuilder.class).value(),(IComponentBuilder) o);
             }catch(NoSuchMethodException e){
                 System.out.println(c + " : No Main method with empty parameters.");
-            } catch (IllegalAccessException e) {
-                e.printStackTrace();
-            } catch (InstantiationException e) {
-                e.printStackTrace();
-            } catch (InvocationTargetException e) {
+            } catch (IllegalAccessException | InstantiationException | InvocationTargetException e) {
                 e.printStackTrace();
             }
         });
