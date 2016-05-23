@@ -3,6 +3,7 @@ package com.mcleodog.Components;
 import com.mcleodog.Components.annotations.EventHandler;
 import com.mcleodog.Components.annotations.Instance;
 import com.mcleodog.Components.annotations.Module;
+import com.mcleodog.Components.annotations.ModuleEventHandle;
 import org.reflections.Reflections;
 
 import java.lang.reflect.Constructor;
@@ -20,6 +21,7 @@ import java.util.Set;
 public class Components {
 
     private static HashMap<String, Object> instances = new HashMap<>();
+    private static HashMap<String, HashMap<ModuleEventHandle, Method>> methods = new HashMap<>();
 
     public static void init(){
         Reflections reflections = new Reflections();
@@ -38,6 +40,13 @@ public class Components {
                 for (Method m : module.getMethods()) {
                     if (m.isAnnotationPresent(EventHandler.class)) {
                         //TODO
+                        HashMap<ModuleEventHandle, Method> batch = methods.get(module.getAnnotation(Module.class)
+                                .modid());
+                        if(batch == null){
+                            batch = new HashMap<>();
+                        }
+                        batch.put(m.getAnnotation(EventHandler.class).value(), m);
+                        methods.put(module.getAnnotation(Module.class).modid(), batch);
                     }
                 }
             } catch (IllegalAccessException e) {
@@ -50,7 +59,16 @@ public class Components {
                 e.printStackTrace();
             }
         });
-        instances.forEach((k,v) -> System.out.println(v));
+        instances.forEach((k,v) -> {
+            System.out.println(v);
+            try {
+                methods.get(k).get(ModuleEventHandle.INIT).invoke(v);
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            } catch (InvocationTargetException e) {
+                e.printStackTrace();
+            }
+        });
     }
 
 }

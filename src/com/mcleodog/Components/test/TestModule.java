@@ -1,7 +1,9 @@
 package com.mcleodog.Components.test;
 
+import com.mcleodog.Components.annotations.EventHandler;
 import com.mcleodog.Components.annotations.Instance;
 import com.mcleodog.Components.annotations.Module;
+import com.mcleodog.Components.annotations.ModuleEventHandle;
 
 /**
  * Created by olivermcleod on 23/05/2016.
@@ -18,6 +20,11 @@ public class TestModule {
 
     public static void test(){
         System.out.println(instance);
+    }
+
+    @EventHandler(ModuleEventHandle.INIT)
+    public void initialization(){
+        System.out.println("I Have Been Initialised!");
     }
 
     @Override
