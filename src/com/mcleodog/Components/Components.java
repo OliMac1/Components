@@ -4,6 +4,7 @@ import com.mcleodog.Components.annotations.EventHandler;
 import com.mcleodog.Components.annotations.Instance;
 import com.mcleodog.Components.annotations.Module;
 import com.mcleodog.Components.annotations.ModuleEventHandle;
+import com.mcleodog.Components.exceptions.NullBuilderException;
 import org.reflections.Reflections;
 
 import java.lang.reflect.Constructor;
@@ -22,6 +23,7 @@ public class Components {
 
     private static HashMap<String, Object> instances = new HashMap<>();
     private static HashMap<String, HashMap<ModuleEventHandle, Method>> methods = new HashMap<>();
+    private static HashMap<Integer, IComponentBuilder> components = new HashMap<>();
 
     public static void init(){
         Reflections reflections = new Reflections();
@@ -69,6 +71,21 @@ public class Components {
                 e.printStackTrace();
             }
         });
+    }
+
+    public static void addComponentBuilder(IComponentBuilder builder) throws NullBuilderException{
+        if(builder == null){
+            throw new NullBuilderException();
+        }
+        components.put(ComponentIdentLoader.getNextIdent(), builder);
+    }
+
+    public static IComponentBuilder getComponentBuilder(int i) throws NullBuilderException{
+        IComponentBuilder builder = components.get(i);
+        if(builder == null){
+            throw new NullBuilderException();
+        }
+        return builder;
     }
 
 }

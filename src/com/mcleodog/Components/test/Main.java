@@ -7,6 +7,7 @@ import com.mcleodog.Components.annotations.Instance;
 import com.mcleodog.Components.annotations.Module;
 import com.mcleodog.Components.defaults.DefaultBaseEntity;
 import com.mcleodog.Components.defaults.DefaultBaseEntityHolder;
+import com.mcleodog.Components.exceptions.NullBuilderException;
 import com.mcleodog.Components.exceptions.NullComponentException;
 import com.mcleodog.Components.exceptions.NullEntityException;
 import org.reflections.Reflections;
@@ -30,8 +31,12 @@ public class Main {
         IBaseEntityHolder e = new DefaultBaseEntityHolder();
         for(int i = 0; i < 5; i++) {
             IBaseEntity entity = new DefaultBaseEntity();
-            /*entity.addComponent(builders.get(2).buildNew());
-            entity.addComponent(builders.get(1).buildNew());*/
+            try {
+                entity.addComponent(Components.getComponentBuilder(0).buildNew());
+                entity.addComponent(Components.getComponentBuilder(1).buildNew());
+            } catch (NullBuilderException e1) {
+                e1.printStackTrace();
+            }
             e.addEntity(entity);
         }
         e.update();
