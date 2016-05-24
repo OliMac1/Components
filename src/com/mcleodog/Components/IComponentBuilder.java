@@ -1,5 +1,7 @@
 package com.mcleodog.Components;
 
+import com.mcleodog.Components.exceptions.EndOfFileException;
+
 import java.io.ByteArrayInputStream;
 
 /**
@@ -9,5 +11,5 @@ import java.io.ByteArrayInputStream;
 public interface IComponentBuilder {
 
     IComponent buildNew();
-    IComponent buildFromSave(ByteArrayInputStream data);
+    IComponent buildFromSave(ByteArrayInputStream data) throws EndOfFileException;
 }

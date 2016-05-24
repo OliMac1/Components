@@ -4,6 +4,7 @@ import com.mcleodog.Components.IComponent;
 import com.mcleodog.Components.IComponentBuilder;
 import com.mcleodog.Components.IComponentType;
 import com.mcleodog.Components.annotations.Component;
+import com.mcleodog.Components.exceptions.EndOfFileException;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -41,7 +42,7 @@ public class TestComponent2 implements IComponent{
         }
 
         @Override
-        public IComponent buildFromSave(ByteArrayInputStream data) {
+        public IComponent buildFromSave(ByteArrayInputStream data) throws EndOfFileException {
             return null;
         }
     }
