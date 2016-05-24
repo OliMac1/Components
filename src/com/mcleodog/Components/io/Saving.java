@@ -1,7 +1,5 @@
 package com.mcleodog.Components.io;
 
-import javassist.bytecode.ByteArray;
-
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.nio.ByteBuffer;
@@ -9,6 +7,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
+import java.nio.file.attribute.PosixFilePermissions;
 
 /**
  * Created by Oliver on 22/05/2016.
@@ -17,12 +16,21 @@ public class Saving {
 
     public static Path createFreshBinary(String fileName) throws IOException{
         Path path = Paths.get(fileName);
-        Files.write(path, new byte[0]);
+        if(Files.exists(path)){
+            Files.setPosixFilePermissions(path, PosixFilePermissions.fromString("rw-rw-rw-"));
+            Files.write(path, new byte[0]);
+        }else{
+            Files.createFile(path, PosixFilePermissions.asFileAttribute(PosixFilePermissions.fromString("rw-rw-rw-")));
+        }
         return path;
     }
 
     public static void writeBinaryFile(ByteArrayOutputStream b, Path p) throws IOException{
         Files.write(p, b.toByteArray(), StandardOpenOption.APPEND);
+    }
+
+    public static void makeReadOnly(Path path) throws IOException{
+        Files.setPosixFilePermissions(path, PosixFilePermissions.fromString("r--r--r--"));
     }
 
     public static void addDataToByteArrayStream(ByteArrayOutputStream b, byte[] data) throws IOException {
