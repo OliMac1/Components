@@ -10,6 +10,7 @@ import java.nio.file.StandardOpenOption;
 /**
  * Created by Oliver on 22/05/2016.
  */
+//TODO Saving is slow. needs an overhaul
 public class Saving {
 
     public static Path createFreshBinary(String fileName) throws IOException{

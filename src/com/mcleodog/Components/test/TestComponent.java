@@ -5,8 +5,10 @@ import com.mcleodog.Components.IComponentBuilder;
 import com.mcleodog.Components.IComponentType;
 import com.mcleodog.Components.annotations.Component;
 import com.mcleodog.Components.io.Loading;
+import com.mcleodog.Components.io.Saving;
 
 import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.nio.file.Path;
 
 /**
@@ -34,8 +36,8 @@ public class TestComponent implements IComponent {
     }
 
     @Override
-    public void export(Path path) {
-        //TODO
+    public void export(Path path) throws IOException{
+        Saving.writeBinaryFile(Saving.intToBytes(i),path);
     }
 
     @Component(TestComponent.name)

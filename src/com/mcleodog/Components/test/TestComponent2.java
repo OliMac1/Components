@@ -28,7 +28,7 @@ public class TestComponent2 implements IComponent{
 
     @Override
     public void export(Path path) {
-        //TODO
+        //Nothing to export
     }
 
     @Component(TestComponent2.name)

@@ -21,7 +21,7 @@ public class Main {
         Components.init();
 
         IBaseEntityHolder e = new DefaultBaseEntityHolder();
-        for(int i = 0; i < 5; i++) {
+        for(int i = 0; i < 700; i++) {
             IBaseEntity entity = new DefaultBaseEntity();
             try {
                 entity.addComponent(Components.getComponentBuilder(0).buildNew());
@@ -31,6 +31,8 @@ public class Main {
             }
             e.addEntity(entity);
         }
+        e.update();
+        e.update();
         e.update();
 
         e.export();
