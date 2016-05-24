@@ -5,6 +5,7 @@ import com.mcleodog.Components.IBaseEntityHolder;
 import com.mcleodog.Components.exceptions.NullEntityException;
 import com.mcleodog.Components.io.Saving;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.util.ArrayList;
@@ -45,14 +46,16 @@ public class DefaultBaseEntityHolder implements IBaseEntityHolder {
         //String fileName = "/Users/olivermcleod/Desktop/Components/entities.bin";
         try {
             Path path = Saving.createFreshBinary(fileName);
-            Saving.writeBinaryFile(Saving.intToBytes(entities.size()), path);
+            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+            Saving.addDataToByteArrayStream(byteArrayOutputStream, Saving.intToBytes(entities.size()));
             entities.forEach(e -> {
                 try {
-                    e.export(path);
+                    e.export(byteArrayOutputStream);
                 }catch(IOException ex){
                     ex.printStackTrace();
                 }
             });
+            Saving.writeBinaryFile(byteArrayOutputStream, path);
         }catch(IOException e){
             e.printStackTrace();
         }

@@ -6,6 +6,7 @@ import com.mcleodog.Components.IComponentType;
 import com.mcleodog.Components.exceptions.NullComponentException;
 import com.mcleodog.Components.io.Saving;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.util.Comparator;
@@ -45,13 +46,13 @@ public class DefaultBaseEntity implements IBaseEntity {
     }
 
     @Override
-    public void export(Path path) throws IOException{
-        Saving.writeBinaryFile(Saving.intToBytes(components.size()),path);
+    public void export(ByteArrayOutputStream b) throws IOException{
+        Saving.addDataToByteArrayStream(b, Saving.intToBytes(components.size()));
         components.forEach((k,v) -> {
             try {
                 //TODO export Key in a usable format.
-                v.export(path);
-            }catch(IOException e){
+                v.export(b);
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         });

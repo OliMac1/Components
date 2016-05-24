@@ -6,7 +6,8 @@ import com.mcleodog.Components.IComponentType;
 import com.mcleodog.Components.annotations.Component;
 
 import java.io.ByteArrayInputStream;
-import java.nio.file.Path;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 
 /**
  * Created by Oliver on 22/05/2016.
@@ -23,11 +24,11 @@ public class TestComponent2 implements IComponent{
 
     @Override
     public void update() {
-        System.out.println("This is a second defaults.");
+        //System.out.println("This is a second defaults.");
     }
 
     @Override
-    public void export(Path path) {
+    public void export(ByteArrayOutputStream byteArrayOutputStream) throws IOException{
         //Nothing to export
     }
 

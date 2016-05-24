@@ -1,5 +1,8 @@
 package com.mcleodog.Components.io;
 
+import javassist.bytecode.ByteArray;
+
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.file.Files;
@@ -19,8 +22,12 @@ public class Saving {
         return path;
     }
 
-    public static void writeBinaryFile(byte[] data, Path p) throws IOException{
-        Files.write(p, data, StandardOpenOption.APPEND);
+    public static void writeBinaryFile(ByteArrayOutputStream b, Path p) throws IOException{
+        Files.write(p, b.toByteArray(), StandardOpenOption.APPEND);
+    }
+
+    public static void addDataToByteArrayStream(ByteArrayOutputStream b, byte[] data) throws IOException {
+        b.write(data);
     }
 
     public static byte[] intToBytes(int i){

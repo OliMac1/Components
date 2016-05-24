@@ -8,6 +8,7 @@ import com.mcleodog.Components.io.Loading;
 import com.mcleodog.Components.io.Saving;
 
 import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.nio.file.Path;
 
@@ -31,13 +32,13 @@ public class TestComponent implements IComponent {
 
     @Override
     public void update() {
-        System.out.println("This is a defaults: " + i);
+        //System.out.println("This is a defaults: " + i);
         i++;
     }
 
     @Override
-    public void export(Path path) throws IOException{
-        Saving.writeBinaryFile(Saving.intToBytes(i),path);
+    public void export(ByteArrayOutputStream b) throws IOException{
+        Saving.addDataToByteArrayStream(b, Saving.intToBytes(i));
     }
 
     @Component(TestComponent.name)
