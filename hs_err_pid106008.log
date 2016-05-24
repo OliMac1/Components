@@ -1,0 +1,127 @@
+#
+# There is insufficient memory for the Java Runtime Environment to continue.
+# Native memory allocation (mmap) failed to map 134217728 bytes for Failed to commit area from 0x0000000080e00000 to 0x0000000088e00000 of length 134217728.
+# Possible reasons:
+#   The system is out of physical RAM or swap space
+#   In 32 bit mode, the process size limit was hit
+# Possible solutions:
+#   Reduce memory load on the system
+#   Increase physical memory or swap space
+#   Check if swap backing store is full
+#   Use 64 bit Java on a 64 bit OS
+#   Decrease Java heap size (-Xmx/-Xms)
+#   Decrease number of Java threads
+#   Decrease Java thread stack sizes (-Xss)
+#   Set larger code cache with -XX:ReservedCodeCacheSize=
+# This output file may be truncated or incomplete.
+#
+#  Out of Memory Error (os_windows.cpp:3332), pid=106008, tid=106028
+#
+# JRE version:  (8.0_91-b14) (build )
+# Java VM: Java HotSpot(TM) 64-Bit Server VM (25.91-b14 mixed mode windows-amd64 compressed oops)
+# Failed to write core dump. Minidumps are not enabled by default on client versions of Windows
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x00000000020be000):  JavaThread "Unknown thread" [_thread_in_vm, id=106028, stack(0x0000000001f00000,0x0000000002000000)]
+
+Stack: [0x0000000001f00000,0x0000000002000000]
+[error occurred during error reporting (printing stack bounds), id 0xc0000005]
+
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+
+
+---------------  P R O C E S S  ---------------
+
+Java Threads: ( => current thread )
+
+Other Threads:
+
+=>0x00000000020be000 (exited) JavaThread "Unknown thread" [_thread_in_vm, id=106028, stack(0x0000000001f00000,0x0000000002000000)]
+
+VM state:not at safepoint (not fully initialized)
+
+VM Mutex/Monitor currently owned by a thread:  ([mutex/lock_event])
+[0x00000000020c11d0] Heap_lock - owner thread: 0x00000000020be000
+
+GC Heap History (0 events):
+No events
+
+Deoptimization events (0 events):
+No events
+
+Internal exceptions (0 events):
+No events
+
+Events (0 events):
+No events
+
+
+Dynamic libraries:
+0x00007ff7c0d50000 - 0x00007ff7c0d87000 	C:\Program Files\Java\jdk1.8.0_91\bin\java.exe
+0x00007ffcbb850000 - 0x00007ffcbb9fd000 	C:\Windows\SYSTEM32\ntdll.dll
+0x00007ffcba000000 - 0x00007ffcba13e000 	C:\Windows\system32\KERNEL32.DLL
+0x00007ffcb8ce0000 - 0x00007ffcb8df5000 	C:\Windows\system32\KERNELBASE.dll
+0x00007ffcb7550000 - 0x00007ffcb75de000 	C:\Windows\system32\apphelp.dll
+0x00007ffcb1cc0000 - 0x00007ffcb1d13000 	C:\Windows\AppPatch\AppPatch64\AcGenral.DLL
+0x00007ffcb97c0000 - 0x00007ffcb986a000 	C:\Windows\system32\msvcrt.dll
+0x00007ffcb8eb0000 - 0x00007ffcb8ede000 	C:\Windows\system32\SspiCli.dll
+0x00007ffcba260000 - 0x00007ffcba2b4000 	C:\Windows\system32\SHLWAPI.dll
+0x00007ffcb9640000 - 0x00007ffcb97b7000 	C:\Windows\system32\USER32.dll
+0x00007ffcb99d0000 - 0x00007ffcb9b64000 	C:\Windows\system32\ole32.dll
+0x00007ffcba320000 - 0x00007ffcbb84a000 	C:\Windows\system32\SHELL32.dll
+0x00007ffcb7f50000 - 0x00007ffcb7f71000 	C:\Windows\SYSTEM32\USERENV.dll
+0x00007ffcb8ee0000 - 0x00007ffcb8f8a000 	C:\Windows\system32\ADVAPI32.dll
+0x00007ffcb2670000 - 0x00007ffcb268e000 	C:\Windows\SYSTEM32\MPR.dll
+0x00007ffcb9500000 - 0x00007ffcb9640000 	C:\Windows\system32\RPCRT4.dll
+0x00007ffcba200000 - 0x00007ffcba259000 	C:\Windows\SYSTEM32\sechost.dll
+0x00007ffcb9100000 - 0x00007ffcb9311000 	C:\Windows\SYSTEM32\combase.dll
+0x00007ffcb9eb0000 - 0x00007ffcba000000 	C:\Windows\system32\GDI32.dll
+0x00007ffcb8980000 - 0x00007ffcb8995000 	C:\Windows\SYSTEM32\profapi.dll
+0x00007ffcb6f00000 - 0x00007ffcb6fb2000 	C:\Windows\SYSTEM32\SHCORE.dll
+0x00007ffcb9d30000 - 0x00007ffcb9d66000 	C:\Windows\system32\IMM32.DLL
+0x00007ffcb9870000 - 0x00007ffcb99c2000 	C:\Windows\system32\MSCTF.dll
+0x00007ffcb65e0000 - 0x00007ffcb685b000 	C:\Windows\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.9600.18006_none_623f33d3ecbe86e8\COMCTL32.dll
+0x00000000578f0000 - 0x00000000579c2000 	C:\Program Files\Java\jdk1.8.0_91\jre\bin\msvcr100.dll
+0x0000000057050000 - 0x00000000578e3000 	C:\Program Files\Java\jdk1.8.0_91\jre\bin\server\jvm.dll
+0x00007ffcb2e60000 - 0x00007ffcb2e69000 	C:\Windows\SYSTEM32\WSOCK32.dll
+0x00007ffcb4dd0000 - 0x00007ffcb4df2000 	C:\Windows\SYSTEM32\WINMM.dll
+0x00007ffcb6860000 - 0x00007ffcb686a000 	C:\Windows\SYSTEM32\VERSION.dll
+0x00007ffcb8fc0000 - 0x00007ffcb8fc7000 	C:\Windows\system32\PSAPI.DLL
+0x00007ffcba2c0000 - 0x00007ffcba31a000 	C:\Windows\system32\WS2_32.dll
+0x00007ffcb49a0000 - 0x00007ffcb49ca000 	C:\Windows\SYSTEM32\WINMMBASE.dll
+0x00007ffcb9ea0000 - 0x00007ffcb9ea9000 	C:\Windows\system32\NSI.dll
+0x00007ffcb8e00000 - 0x00007ffcb8e4f000 	C:\Windows\SYSTEM32\cfgmgr32.dll
+0x00007ffcb77a0000 - 0x00007ffcb77c8000 	C:\Windows\SYSTEM32\DEVOBJ.dll
+0x0000000057040000 - 0x000000005704f000 	C:\Program Files\Java\jdk1.8.0_91\jre\bin\verify.dll
+0x0000000057010000 - 0x0000000057039000 	C:\Program Files\Java\jdk1.8.0_91\jre\bin\java.dll
+0x0000000056ff0000 - 0x0000000057006000 	C:\Program Files\Java\jdk1.8.0_91\jre\bin\zip.dll
+
+VM Arguments:
+jvm_args: -XX:+UseG1GC -Didea.launcher.port=7534 -Didea.launcher.bin.path=C:\Program Files (x86)\JetBrains\IntelliJ IDEA Community Edition 2016.1.2\bin -Dfile.encoding=UTF-8 
+java_command: com.intellij.rt.execution.application.AppMain com.mcleodog.Components.test.Main
+java_class_path (initial): C:\Program Files\Java\jdk1.8.0_91\jre\lib\charsets.jar;C:\Program Files\Java\jdk1.8.0_91\jre\lib\deploy.jar;C:\Program Files\Java\jdk1.8.0_91\jre\lib\ext\access-bridge-64.jar;C:\Program Files\Java\jdk1.8.0_91\jre\lib\ext\cldrdata.jar;C:\Program Files\Java\jdk1.8.0_91\jre\lib\ext\dnsns.jar;C:\Program Files\Java\jdk1.8.0_91\jre\lib\ext\jaccess.jar;C:\Program Files\Java\jdk1.8.0_91\jre\lib\ext\jfxrt.jar;C:\Program Files\Java\jdk1.8.0_91\jre\lib\ext\localedata.jar;C:\Program Files\Java\jdk1.8.0_91\jre\lib\ext\nashorn.jar;C:\Program Files\Java\jdk1.8.0_91\jre\lib\ext\sunec.jar;C:\Program Files\Java\jdk1.8.0_91\jre\lib\ext\sunjce_provider.jar;C:\Program Files\Java\jdk1.8.0_91\jre\lib\ext\sunmscapi.jar;C:\Program Files\Java\jdk1.8.0_91\jre\lib\ext\sunpkcs11.jar;C:\Program Files\Java\jdk1.8.0_91\jre\lib\ext\zipfs.jar;C:\Program Files\Java\jdk1.8.0_91\jre\lib\javaws.jar;C:\Program Files\Java\jdk1.8.0_91\jre\lib\jce.jar;C:\Program Files\Java\jdk1.8.0_91\jre\lib\jfr.jar;C:\Program Files\Java\jdk1.8.0_91\jre\lib\jfxswt.jar;C:\Program Files\Java\jdk1.8.0_91\jre\lib\jsse.jar;C:\Program Files\Java\jdk1.8.0_91\jre\lib\management-agent.jar;C:\Program Files\Java\jdk1.8.0_91\jre\lib\plugin.jar;C:\Program Files\Java\jdk1.8.0_91\jre\lib\resources.jar;C:\Program Files\Java\jdk1.8.0_91\jre\lib\rt.jar;C:\Users\Oliver\IdeaProjects\Components\out\production\Components;C:\Users\Oliver\.m2\repository\org\reflections\reflections\0.9.9-RC1\reflections-0.9.9-RC1.jar;C:\Users\Oliver\.m2\repository\com\google\guava\guava\11.0.2\guava-11.0.2.jar;C:\Users\Oliver\.m2\repository\com\google\code\findbugs\jsr305\1.3.9\jsr305-1.3.9.jar;C:\Users\Oliver\.m2\repository\org\javassist\javassist\3.16.1-GA\javassist-3.16.1-GA.jar;C:\Users\Oliver\.m2\repository\dom4j\dom4j\1.6.1\dom4j-1.6.1.jar;C:\Users\Oliver\.m2\repository\xml-apis\xml-apis\1.0.b2\xml-apis-1.0.b2.jar;C:\Program Files (x86)\JetBrains\IntelliJ IDEA Community Edition 2016.1.2\lib\idea_rt.jar
+Launcher Type: SUN_STANDARD
+
+Environment Variables:
+PATH=C:\Python27\;C:\Python27\Scripts;C:\ProgramData\Oracle\Java\javapath;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Users\Oliver\AppData\Local\Android\android-sdk\platform-tools;C:\Program Files (x86)\QuickTime\QTSystem\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files (x86)\Skype\Phone\;C:\Program Files\Git\cmd
+USERNAME=Oliver
+OS=Windows_NT
+PROCESSOR_IDENTIFIER=Intel64 Family 6 Model 60 Stepping 3, GenuineIntel
+
+
+
+---------------  S Y S T E M  ---------------
+
+OS: Windows 8.1 , 64 bit Build 9600 (6.3.9600.17415)
+
+CPU:total 8 (4 cores per cpu, 2 threads per core) family 6 model 60 stepping 3, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, avx, avx2, aes, clmul, erms, lzcnt, ht, tsc, tscinvbit, bmi1, bmi2
+
+Memory: 4k page, physical 8323996k(1485360k free), swap 33489820k(72424k free)
+
+vm_info: Java HotSpot(TM) 64-Bit Server VM (25.91-b14) for windows-amd64 JRE (1.8.0_91-b14), built on Apr  1 2016 00:58:32 by "java_re" with MS VC++ 10.0 (VS2010)
+
+time: Tue May 24 11:44:19 2016
+elapsed time: 0 seconds (0d 0h 0m 0s)
+

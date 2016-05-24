@@ -1,19 +1,16 @@
 package com.mcleodog.Components;
 
-import com.mcleodog.Components.annotations.EventHandler;
-import com.mcleodog.Components.annotations.Instance;
-import com.mcleodog.Components.annotations.Module;
-import com.mcleodog.Components.annotations.ModuleEventHandle;
+import com.mcleodog.Components.annotations.*;
 import com.mcleodog.Components.exceptions.NullBuilderException;
+import com.mcleodog.Components.exceptions.UnannotatedException;
 import org.reflections.Reflections;
 
+import java.lang.annotation.Annotation;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Set;
 
 /**
@@ -30,7 +27,6 @@ public class Components {
         Set<Class<?>> moduleSet = reflections.getTypesAnnotatedWith(Module.class);
         moduleSet.forEach(module -> {
             try {
-                System.out.println(module);
                 Constructor constructor = module.getConstructor();
                 for (Field f : module.getFields()) {
                     if (f.isAnnotationPresent(Instance.class)) {
@@ -41,7 +37,6 @@ public class Components {
                 }
                 for (Method m : module.getMethods()) {
                     if (m.isAnnotationPresent(EventHandler.class)) {
-                        //TODO
                         HashMap<ModuleEventHandle, Method> batch = methods.get(module.getAnnotation(Module.class)
                                 .modid());
                         if(batch == null){
@@ -62,7 +57,6 @@ public class Components {
             }
         });
         instances.forEach((k,v) -> {
-            System.out.println(v);
             try {
                 methods.get(k).get(ModuleEventHandle.INIT).invoke(v);
             } catch (IllegalAccessException e) {
@@ -73,9 +67,13 @@ public class Components {
         });
     }
 
-    public static void addComponentBuilder(IComponentBuilder builder) throws NullBuilderException{
+    public static void addComponentBuilder(IComponentBuilder builder) throws NullBuilderException, UnannotatedException {
         if(builder == null){
             throw new NullBuilderException();
+        }
+        Annotation a = builder.getClass().getAnnotation(Component.class);
+        if(a == null){
+            throw new UnannotatedException();
         }
         components.put(ComponentIdentLoader.getNextIdent(), builder);
     }

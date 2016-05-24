@@ -6,6 +6,7 @@ import com.mcleodog.Components.annotations.Instance;
 import com.mcleodog.Components.annotations.Module;
 import com.mcleodog.Components.annotations.ModuleEventHandle;
 import com.mcleodog.Components.exceptions.NullBuilderException;
+import com.mcleodog.Components.exceptions.UnannotatedException;
 
 /**
  * Created by olivermcleod on 23/05/2016.
@@ -20,17 +21,14 @@ public class TestModule {
     @Instance(modid = TestModule.MODID)
     public static TestModule instance;
 
-    public static void test(){
-        System.out.println(instance);
-    }
-
     @EventHandler(ModuleEventHandle.INIT)
     public void initialization(){
-        System.out.println("I Have Been Initialised!");
         try {
-            Components.addComponentBuilder(new TestComponentBuilder());
-            Components.addComponentBuilder(new TestComponent2Builder());
+            Components.addComponentBuilder(new TestComponent.TestComponentBuilder());
+            Components.addComponentBuilder(new TestComponent2.TestComponent2Builder());
         } catch (NullBuilderException e) {
+            e.printStackTrace();
+        } catch (UnannotatedException e) {
             e.printStackTrace();
         }
     }
