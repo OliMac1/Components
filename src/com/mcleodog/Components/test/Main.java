@@ -28,11 +28,11 @@ public class Main {
 
         System.out.println("Start build");
         IBaseEntityHolder e = new DefaultBaseEntityHolder();
-        for(int i = 0; i < 7; i++) {
+        for(int i = 0; i < 7000000; i++) {
             IBaseEntity entity = new DefaultBaseEntity();
             try {
-                entity.addComponent(Components.getComponentBuilder(1).buildNew());
                 entity.addComponent(Components.getComponentBuilder(0).buildNew());
+                entity.addComponent(Components.getComponentBuilder(1).buildNew());
             } catch (NullBuilderException e1) {
                 e1.printStackTrace();
             }

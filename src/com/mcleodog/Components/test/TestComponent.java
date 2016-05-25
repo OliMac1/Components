@@ -33,7 +33,7 @@ public class TestComponent implements IComponent {
 
     @Override
     public void update() {
-        System.out.println("This is a test: " + i);
+        //System.out.println("This is a test: " + i);
         i++;
     }
 

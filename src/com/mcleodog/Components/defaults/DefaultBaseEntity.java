@@ -34,7 +34,7 @@ public class DefaultBaseEntity implements IBaseEntity {
             throw new NullComponentException();
         }
         components.put(c.getType(), c);
-        sort();
+        //sort();
     }
 
     @Override
