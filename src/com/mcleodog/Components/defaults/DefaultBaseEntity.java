@@ -52,7 +52,7 @@ public class DefaultBaseEntity implements IBaseEntity {
         Saving.addDataToByteArrayStream(b, Saving.intToBytes(components.size()));
         components.forEach((k,v) -> {
             try {
-                //TODO export Key in a usable format.
+                //TODO export Key in a usable format. Only doable after performance fixed
                 v.export(b);
             } catch (IOException e) {
                 e.printStackTrace();
