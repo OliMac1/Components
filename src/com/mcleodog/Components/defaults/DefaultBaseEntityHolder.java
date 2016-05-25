@@ -42,11 +42,11 @@ public class DefaultBaseEntityHolder implements IBaseEntityHolder {
 
     @Override
     public void export() {
-        //String fileName = "Z:/New folder (5)/Components/entities.bin";
-        String fileName = "/Users/olivermcleod/Desktop/Components/entities.bin";
+        String fileName = "Z:/New folder (5)/Components/entities.bin";
+        //String fileName = "/Users/olivermcleod/Desktop/Components/entities.bin";
         try {
             Path path = Saving.createFreshBinary(fileName);
-            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+            ByteArrayOutputStream byteArrayOutputStream = Saving.generateByteArrayOutputStream();
             Saving.addDataToByteArrayStream(byteArrayOutputStream, Saving.intToBytes(entities.size()));
             entities.forEach(e -> {
                 try {
@@ -56,7 +56,6 @@ public class DefaultBaseEntityHolder implements IBaseEntityHolder {
                 }
             });
             Saving.writeBinaryFile(byteArrayOutputStream, path);
-            Saving.makeReadOnly(path);
         }catch(IOException e){
             e.printStackTrace();
         }

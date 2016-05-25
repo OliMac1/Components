@@ -10,6 +10,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -23,9 +24,10 @@ public class DefaultBaseEntity implements IBaseEntity {
     private LinkedHashMap<IComponentType, IComponent> components;
 
     public DefaultBaseEntity() {
-        components = new LinkedHashMap<IComponentType, IComponent>();
+        components = new LinkedHashMap<>();
     }
 
+    //TODO serious performance issues
     @Override
     public void addComponent(IComponent c) throws NullComponentException {
         if (c == null) {
@@ -60,12 +62,11 @@ public class DefaultBaseEntity implements IBaseEntity {
 
     private void sort() {
         components = components.entrySet().stream().sorted(Map.Entry.comparingByKey(comp))
-                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (a, b) -> a, LinkedHashMap<IComponentType, IComponent>::new));
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (a, b) -> a, LinkedHashMap<IComponentType,
+                        IComponent>::new));
     }
 
     private static class KeyComparator implements Comparator<IComponentType> {
-
-
         @Override
         public int compare(IComponentType o1, IComponentType o2) {
             return o2.getPriority() - o1.getPriority();

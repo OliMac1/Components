@@ -17,10 +17,9 @@ public class Saving {
     public static Path createFreshBinary(String fileName) throws IOException{
         Path path = Paths.get(fileName);
         if(Files.exists(path)){
-            Files.setPosixFilePermissions(path, PosixFilePermissions.fromString("rw-rw-rw-"));
             Files.write(path, new byte[0]);
         }else{
-            Files.createFile(path, PosixFilePermissions.asFileAttribute(PosixFilePermissions.fromString("rw-rw-rw-")));
+            Files.createFile(path);
         }
         return path;
     }
@@ -29,8 +28,8 @@ public class Saving {
         Files.write(p, b.toByteArray(), StandardOpenOption.APPEND);
     }
 
-    public static void makeReadOnly(Path path) throws IOException{
-        Files.setPosixFilePermissions(path, PosixFilePermissions.fromString("r--r--r--"));
+    public static ByteArrayOutputStream generateByteArrayOutputStream(){
+        return new ByteArrayOutputStream();
     }
 
     public static void addDataToByteArrayStream(ByteArrayOutputStream b, byte[] data) throws IOException {

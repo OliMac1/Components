@@ -26,17 +26,20 @@ public class Main {
 
         Components.init();
 
+        System.out.println("Start build");
         IBaseEntityHolder e = new DefaultBaseEntityHolder();
-        for(int i = 0; i < 70000; i++) {
+        for(int i = 0; i < 7; i++) {
             IBaseEntity entity = new DefaultBaseEntity();
             try {
-                entity.addComponent(Components.getComponentBuilder(0).buildNew());
                 entity.addComponent(Components.getComponentBuilder(1).buildNew());
+                entity.addComponent(Components.getComponentBuilder(0).buildNew());
             } catch (NullBuilderException e1) {
                 e1.printStackTrace();
             }
             e.addEntity(entity);
         }
+        System.out.println("Finish Build");
+
         e.update();
         e.update();
         e.update();
