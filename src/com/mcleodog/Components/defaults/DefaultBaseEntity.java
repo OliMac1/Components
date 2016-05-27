@@ -8,8 +8,8 @@ import com.mcleodog.Components.io.Saving;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.util.*;
-import java.util.stream.Collectors;
+import java.util.Comparator;
+import java.util.PriorityQueue;
 
 /**
  * Created by olivermcleod on 21/05/2016.
@@ -23,7 +23,6 @@ public class DefaultBaseEntity implements IBaseEntity {
         components = new PriorityQueue<>(comp);
     }
 
-    //EDIT minor performance issues
     @Override
     public void addComponent(IComponent c) throws NullComponentException {
         if (c == null) {
@@ -36,7 +35,14 @@ public class DefaultBaseEntity implements IBaseEntity {
 
     @Override
     public IComponent removeComponent(IComponentType c) {
-        return components.peek();
+        IComponent[] removal = {null};
+        components.forEach(e -> {
+            if(e.getType() == c){
+                components.remove(e);
+                removal[0] = e;
+            }
+        });
+        return removal[0];
     }
 
     @Override

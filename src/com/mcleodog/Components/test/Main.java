@@ -24,9 +24,10 @@ public class Main {
         System.out.println("Start build");
         long time = System.nanoTime();
         IBaseEntityHolder e = new DefaultBaseEntityHolder();
-        for(int i = 0; i < 700000; i++) {
+        for(int i = 0; i < 7; i++) {
             IBaseEntity entity = new DefaultBaseEntity();
             try {
+                entity.addComponent(Components.getComponentBuilder(0).buildNew());
                 entity.addComponent(Components.getComponentBuilder(0).buildNew());
                 entity.addComponent(Components.getComponentBuilder(1).buildNew());
             } catch (NullBuilderException e1) {

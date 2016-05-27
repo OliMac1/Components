@@ -25,7 +25,7 @@ public class TestComponent2 implements IComponent{
 
     @Override
     public void update() {
-        //System.out.println("This is a second test.");
+        System.out.println("This is a second test.");
     }
 
     @Override
