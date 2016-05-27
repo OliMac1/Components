@@ -9,13 +9,8 @@ import com.mcleodog.Components.exceptions.EndOfFileException;
 import com.mcleodog.Components.exceptions.NullBuilderException;
 import com.mcleodog.Components.exceptions.NullComponentException;
 import com.mcleodog.Components.exceptions.NullEntityException;
-import com.mcleodog.Components.io.Loading;
-import com.mcleodog.Components.io.Saving;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.nio.file.Path;
 
 /**
  * Created by Oliver on 21/05/2016.
@@ -27,8 +22,9 @@ public class Main {
         Components.init();
 
         System.out.println("Start build");
+        long time = System.nanoTime();
         IBaseEntityHolder e = new DefaultBaseEntityHolder();
-        for(int i = 0; i < 7000000; i++) {
+        for(int i = 0; i < 700000; i++) {
             IBaseEntity entity = new DefaultBaseEntity();
             try {
                 entity.addComponent(Components.getComponentBuilder(0).buildNew());
@@ -39,6 +35,7 @@ public class Main {
             e.addEntity(entity);
         }
         System.out.println("Finish Build");
+        System.out.println(System.nanoTime() - time);
 
         e.update();
         e.update();
