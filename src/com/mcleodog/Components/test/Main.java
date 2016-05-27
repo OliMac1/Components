@@ -29,14 +29,14 @@ public class Main {
             try {
                 entity.addComponent(Components.getComponentBuilder(0).buildNew());
                 entity.addComponent(Components.getComponentBuilder(0).buildNew());
-                entity.addComponent(Components.getComponentBuilder(1).buildNew());
+                entity.removeComponent(TestComponentType.TEST_COMPONENT_TYPE);
             } catch (NullBuilderException e1) {
                 e1.printStackTrace();
             }
             e.addEntity(entity);
         }
         System.out.println("Finish Build");
-        System.out.println(System.nanoTime() - time);
+        System.out.println((System.nanoTime() - time)/1000000000f);
 
         e.update();
         e.update();
