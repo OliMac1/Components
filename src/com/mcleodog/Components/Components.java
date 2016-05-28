@@ -58,7 +58,7 @@ public class Components {
         });
         instances.forEach((k,v) -> {
             try {
-                methods.get(k).get(ModuleEventHandle.INIT).invoke(v);
+                components.get(k).get(ModuleEventHandle.INIT).invoke(v);
             } catch (IllegalAccessException e) {
                 e.printStackTrace();
             } catch (InvocationTargetException e) {
