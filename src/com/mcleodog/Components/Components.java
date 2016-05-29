@@ -58,7 +58,7 @@ public class Components {
         });
         instances.forEach((k,v) -> {
             try {
-                components.get(k).get(ModuleEventHandle.INIT).invoke(v);
+                methods.get(k).get(ModuleEventHandle.INIT).invoke(v);
             } catch (IllegalAccessException e) {
                 e.printStackTrace();
             } catch (InvocationTargetException e) {
@@ -71,11 +71,11 @@ public class Components {
         if(builder == null){
             throw new NullBuilderException();
         }
-        Annotation a = builder.getClass().getAnnotation(Component.class);
+        Component a = (Component) builder.getClass().getAnnotation(Component.class);
         if(a == null){
             throw new UnannotatedException();
         }
-        components.put(ComponentIdentLoader.getNextIdent(), builder);
+        components.put(ComponentIdentLoader.getIdent(a.value()), builder);
     }
 
     public static IComponentBuilder getComponentBuilder(int i) throws NullBuilderException{

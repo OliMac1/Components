@@ -1,8 +1,10 @@
 package com.mcleodog.Components.defaults;
 
+import com.mcleodog.Components.ComponentIdentLoader;
 import com.mcleodog.Components.IBaseEntity;
 import com.mcleodog.Components.IComponent;
 import com.mcleodog.Components.IComponentType;
+import com.mcleodog.Components.annotations.Component;
 import com.mcleodog.Components.exceptions.NullComponentException;
 import com.mcleodog.Components.io.Saving;
 
@@ -52,10 +54,11 @@ public class DefaultBaseEntity implements IBaseEntity {
     @Override
     public void export(ByteArrayOutputStream b) throws IOException{
         Saving.addDataToByteArrayStream(b, Saving.intToBytes(components.size()));
-        components.forEach(v -> {
+        components.forEach(c -> {
             try {
-                //TODO export Key in a usable format. Only doable after performance fixed
-                v.export(b);
+                Component comp = c.getClass().getAnnotation(Component.class);
+                Saving.addDataToByteArrayStream(b, Saving.intToBytes(ComponentIdentLoader.getIdent(comp.value())));
+                c.export(b);
             } catch (IOException e) {
                 e.printStackTrace();
             }

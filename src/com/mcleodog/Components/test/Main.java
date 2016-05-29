@@ -1,5 +1,6 @@
 package com.mcleodog.Components.test;
 
+import com.mcleodog.Components.ComponentIdentLoader;
 import com.mcleodog.Components.Components;
 import com.mcleodog.Components.IBaseEntity;
 import com.mcleodog.Components.IBaseEntityHolder;
@@ -20,6 +21,7 @@ public class Main {
     public static void main(String[] args) throws NullComponentException, NullEntityException, IOException, EndOfFileException {
 
         Components.init();
+        ComponentIdentLoader.importIdents();
 
         System.out.println("Start build");
         long time = System.nanoTime();
@@ -44,6 +46,7 @@ public class Main {
 
         System.out.println("Start export");
         e.export();
+        ComponentIdentLoader.exportIdents();
         System.out.println("Export Complete");
     }
 }

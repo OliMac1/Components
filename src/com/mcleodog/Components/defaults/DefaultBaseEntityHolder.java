@@ -3,8 +3,10 @@ package com.mcleodog.Components.defaults;
 import com.mcleodog.Components.IBaseEntity;
 import com.mcleodog.Components.IBaseEntityHolder;
 import com.mcleodog.Components.exceptions.NullEntityException;
+import com.mcleodog.Components.io.Loading;
 import com.mcleodog.Components.io.Saving;
 
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.nio.file.Path;
@@ -17,6 +19,9 @@ import java.util.List;
 public class DefaultBaseEntityHolder implements IBaseEntityHolder {
 
     List<IBaseEntity> entities;
+
+    //private static String fileName = "Z:/New folder (5)/Components/entities.bin";
+    private static String fileName = "/Users/olivermcleod/Desktop/Components/entities.bin";
 
     public DefaultBaseEntityHolder(){
         entities = new ArrayList<IBaseEntity>();
@@ -42,8 +47,6 @@ public class DefaultBaseEntityHolder implements IBaseEntityHolder {
 
     @Override
     public void export() {
-        String fileName = "Z:/New folder (5)/Components/entities.bin";
-        //String fileName = "/Users/olivermcleod/Desktop/Components/entities.bin";
         try {
             Path path = Saving.createFreshBinary(fileName);
             ByteArrayOutputStream byteArrayOutputStream = Saving.generateByteArrayOutputStream();
@@ -60,4 +63,15 @@ public class DefaultBaseEntityHolder implements IBaseEntityHolder {
             e.printStackTrace();
         }
     }
+
+    //TODO loading entities
+    public void importEntities(){
+        try {
+            ByteArrayInputStream b = Loading.readAllBytes(fileName);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
 }
